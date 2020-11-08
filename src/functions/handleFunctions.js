@@ -1,5 +1,5 @@
 function handleSubmit(e, state, setErr) {
-  const { nickName, email, phone, type, how } = state;
+  const { nickName, email, phone, type, how, others } = state;
 
   setErr((prev) => ({
     ...prev,
@@ -73,7 +73,7 @@ function handleSubmit(e, state, setErr) {
   function inputValidation() {
     const mailRG = /^.+@[a-z]+\.[a-z]+(\.[a-z]+)?$/i;
     const phoneRG = /^(09)[0-9]{8}$/;
-    console.log(phoneRG.test(phone));
+
     let invalid = false;
     if (nickName === "") {
       invalid = true;
@@ -108,7 +108,14 @@ function handleSubmit(e, state, setErr) {
     e.preventDefault();
     return;
   } else {
-    console.log("here", state);
+    alert(`
+    暱稱：${nickName}
+    電子郵件：${email}
+    手機號碼：${phone}
+    類型：${type}
+    怎麼知道這個活動的？：${how}
+    其他：${others}
+    `);
     e.preventDefault();
   }
 }
